@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ultra AI Pro v1.0 Beta — La IA más ligera</title>
+<meta name="description" content="Ultra AI Pro: chat con IA, imágenes, audio y texto a voz. 60 KB. Creado por Alejandro Eng.">
+
+<!-- ICONO: reemplaza esta URL por la de tu imagen -->
+<link rel="icon" type="image/png" href="URL_DEL_ICONO">
+<link rel="apple-touch-icon" href="URL_DEL_ICONO">
+
+<!-- Open Graph para compartir en redes -->
+<meta property="og:title" content="Ultra AI Pro v1.0 Beta">
+<meta property="og:description" content="La IA más ligera de todas. 60 KB. 100% gratis.">
+<meta property="og:image" content="URL_DEL_ICONO">
+<meta property="og:type" content="website">
+
+<style>
+    :root {
+        --fondo: #0F172A;
+        --tarjeta: #1E293B;
+        --texto: #E2E8F0;
+        --subtext: #94A3B8;
+        --acento: #38BDF8;
+        --verde: #22C55E;
+        --rojo: #EF4444;
+        --ambar: #F59E0B;
+        --violeta: #8B5CF6;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: var(--fondo);
+        color: var(--texto);
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background:
+            radial-gradient(circle at 20% 20%, rgba(56,189,248,0.12) 0%, transparent 40%),
+            radial-gradient(circle at 80% 80%, rgba(139,92,246,0.12) 0%, transparent 40%),
+            radial-gradient(circle at 50% 50%, rgba(34,197,94,0.06) 0%, transparent 50%);
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    /* NAVBAR */
+    nav {
+        position: sticky;
+        top: 0;
+        background: rgba(15, 23, 42, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        padding: 16px 24px;
+        z-index: 100;
+    }
+
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--texto);
+        text-decoration: none;
+    }
+
+    .logo-icon {
+        width: 36px;
+        height: 36px;
+        background: linear-gradient(135deg, var(--acento), var(--violeta));
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        box-shadow: 0 4px 20px rgba(56, 189, 248, 0.3);
+        overflow: hidden;
+    }
+
+    .logo-icon img { width: 100%; height: 100%; object-fit: cover; }
+
+    .nav-links {
+        display: flex;
+        gap: 28px;
+        list-style: none;
+    }
+
+    .nav-links a {
+        color: var(--subtext);
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--acento); }
+
+    /* HERO */
+    .hero {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 80px 24px 60px;
+        text-align: center;
+    }
+
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(56, 189, 248, 0.1);
+        border: 1px solid rgba(56, 189, 248, 0.3);
+        padding: 8px 16px;
+        border-radius: 999px;
+        font-size: 13px;
+        color: var(--acento);
+        margin-bottom: 24px;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-4px); }
+    }
+
+    .hero-icon {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 20px;
+        border-radius: 28px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(56, 189, 248, 0.4);
+        animation: pulse 4s ease-in-out infinite;
+        background: linear-gradient(135deg, var(--acento), var(--violeta));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 64px;
+    }
+
+    .hero-icon img { width: 100%; height: 100%; object-fit: cover; }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+
+    h1 {
+        font-size: clamp(32px, 6vw, 56px);
+        font-weight: 800;
+        margin-bottom: 16px;
+        background: linear-gradient(135deg, #FFFFFF 0%, var(--acento) 50%, var(--violeta) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+        font-size: clamp(16px, 2.5vw, 20px);
+        color: var(--subtext);
+        max-width: 640px;
+        margin: 0 auto 40px;
+    }
+
+    .buttons {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 60px;
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 16px 28px;
+        border-radius: 14px;
+        font-size: 16px;
+        font-weight: 600;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        font-family: inherit;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, var(--acento), var(--violeta));
+        color: #FFFFFF;
+        box-shadow: 0 10px 30px rgba(56, 189, 248, 0.4);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-primary::before {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: left 0.5s;
+    }
+
+    .btn-primary:hover::before { left: 100%; }
+
+    .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(56, 189, 248, 0.6);
+    }
+
+    .btn-secondary {
+        background: var(--tarjeta);
+        color: var(--texto);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .btn-secondary:hover {
+        background: #263449;
+        border-color: var(--acento);
+        transform: translateY(-3px);
+    }
+
+    section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 60px 24px;
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: clamp(24px, 4vw, 36px);
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+        text-align: center;
+        color: var(--subtext);
+        margin-bottom: 48px;
+        font-size: 16px;
+    }
+
+    .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    .feature-card {
+        background: var(--tarjeta);
+        border: 1px solid rgba(148, 163, 184, 0.1);
+        border-radius: 18px;
+        padding: 28px 24px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .feature-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--acento), var(--violeta));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s;
+    }
+
+    .feature-card:hover::before { transform: scaleX(1); }
+
+    .feature-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(56, 189, 248, 0.3);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .feature-icon {
+        font-size: 36px;
+        margin-bottom: 16px;
+        display: block;
+    }
+
+    .feature-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+
+    .feature-desc {
+        font-size: 14px;
+        color: var(--subtext);
+        line-height: 1.6;
+    }
+
+    .screenshots {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 24px;
+        margin-top: 40px;
+    }
+
+    .screenshot {
+        background: var(--tarjeta);
+        border-radius: 24px;
+        padding: 14px;
+        border: 1px solid rgba(148, 163, 184, 0.1);
+        aspect-ratio: 9/16;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .screenshot:hover {
+        transform: scale(1.03);
+        border-color: var(--acento);
+    }
+
+    .screenshot-screen {
+        flex: 1;
+        background: var(--fondo);
+        border-radius: 14px;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        overflow: hidden;
+    }
+
+    .mock-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+    }
+
+    .mock-dot {
+        width: 24px; height: 24px;
+        background: var(--acento);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+    }
+
+    .mock-bar {
+        flex: 1;
+        height: 8px;
+        background: rgba(148, 163, 184, 0.2);
+        border-radius: 4px;
+    }
+
+    .mock-bubble {
+        background: var(--tarjeta);
+        border-radius: 12px;
+        padding: 10px 12px;
+        font-size: 11px;
+        color: var(--subtext);
+        max-width: 80%;
+    }
+
+    .mock-bubble.user {
+        background: rgba(56, 189, 248, 0.2);
+        color: var(--texto);
+        align-self: flex-end;
+        border: 1px solid rgba(56, 189, 248, 0.4);
+    }
+
+    .mock-bubble.bot {
+        border: 1px solid rgba(34, 197, 94, 0.3);
+    }
+
+    .mock-label {
+        text-align: center;
+        font-size: 13px;
+        color: var(--subtext);
+        margin-top: 12px;
+    }
+
+    .info-box {
+        background: var(--tarjeta);
+        border-radius: 20px;
+        padding: 32px;
+        border: 1px solid rgba(148, 163, 184, 0.1);
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 24px;
+        margin-top: 32px;
+    }
+
+    .info-item { text-align: center; }
+
+    .info-value {
+        font-size: 32px;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--acento), var(--verde));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .info-label {
+        font-size: 13px;
+        color: var(--subtext);
+        margin-top: 4px;
+    }
+
+    .download-box {
+        background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(139, 92, 246, 0.1));
+        border: 1px solid rgba(56, 189, 248, 0.3);
+        border-radius: 24px;
+        padding: 48px 32px;
+        text-align: center;
+    }
+
+    .download-box h2 {
+        font-size: clamp(22px, 4vw, 32px);
+        margin-bottom: 12px;
+    }
+
+    .download-box p {
+        color: var(--subtext);
+        margin-bottom: 28px;
+    }
+
+    .download-notes {
+        margin-top: 24px;
+        font-size: 13px;
+        color: var(--subtext);
+        line-height: 1.8;
+    }
+
+    .download-notes strong { color: var(--texto); }
+
+    .changelog {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .changelog-item {
+        background: var(--tarjeta);
+        border-radius: 16px;
+        padding: 20px 24px;
+        margin-bottom: 12px;
+        border-left: 3px solid var(--acento);
+        transition: all 0.3s ease;
+    }
+
+    .changelog-item:hover {
+        border-left-color: var(--verde);
+        transform: translateX(6px);
+    }
+
+    .changelog-version {
+        font-weight: 700;
+        color: var(--verde);
+        font-size: 15px;
+        margin-bottom: 8px;
+    }
+
+    .changelog-item ul { list-style: none; padding: 0; }
+
+    .changelog-item li {
+        font-size: 14px;
+        color: var(--subtext);
+        padding: 3px 0;
+    }
+
+    .changelog-item li::before {
+        content: '→ ';
+        color: var(--acento);
+    }
+
+    footer {
+        border-top: 1px solid rgba(148, 163, 184, 0.1);
+        padding: 40px 24px;
+        text-align: center;
+        margin-top: 60px;
+    }
+
+    footer p {
+        font-size: 13px;
+        color: var(--subtext);
+        margin-bottom: 8px;
+    }
+
+    footer .heart {
+        color: var(--rojo);
+        animation: beat 1.5s ease-in-out infinite;
+        display: inline-block;
+    }
+
+    @keyframes beat {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+    }
+
+    @media (max-width: 768px) {
+        .nav-links { display: none; }
+        .hero { padding: 50px 20px 40px; }
+        .hero-icon { width: 96px; height: 96px; font-size: 48px; }
+        .buttons { flex-direction: column; align-items: stretch; }
+        .btn { justify-content: center; }
+        section { padding: 40px 20px; }
+        .info-box { padding: 24px; }
+    }
+
+    .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+    }
+
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="nav-container">
+        <a href="#" class="logo">
+            <div class="logo-icon">
+                <img src="URL_DEL_ICONO" alt="Icono">
+            </div>
+            <span>Ultra AI Pro</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#features">Características</a></li>
+            <li><a href="#screenshots">Capturas</a></li>
+            <li><a href="#changelog">Cambios</a></li>
+            <li><a href="#download">Descargar</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+    <div class="badge">
+        <span>🚀</span> Versión 1.0 Beta — Primera versión
+    </div>
+
+    <div class="hero-icon">
+        <img src="URL_DEL_ICONO" alt="Ultra AI Pro">
+    </div>
+
+    <h1>Ultra AI Pro</h1>
+    <p class="subtitle">
+        La IA más ligera de todas. Chat, imágenes, audio y texto a voz en una sola app.
+        Solo 60 KB. 100% gratis.
+    </p>
+
+    <div class="buttons">
+        <a href="#download" class="btn btn-primary">
+            <span>⬇️</span> Descargar APK
+        </a>
+        <a href="#features" class="btn btn-secondary">
+            <span>📖</span> Ver características
+        </a>
+    </div>
+
+    <div class="info-box">
+        <div class="info-item">
+            <div class="info-value">60 KB</div>
+            <div class="info-label">Tamaño del APK</div>
+        </div>
+        <div class="info-item">
+            <div class="info-value">Android 5.0+</div>
+            <div class="info-label">Compatibilidad</div>
+        </div>
+        <div class="info-item">
+            <div class="info-value">100%</div>
+            <div class="info-label">Gratis</div>
+        </div>
+        <div class="info-item">
+            <div class="info-value">3</div>
+            <div class="info-label">Idiomas</div>
+        </div>
+    </div>
+</header>
+
+<!-- FEATURES -->
+<section id="features" class="fade-in">
+    <h2 class="section-title">✨ Características</h2>
+    <p class="section-subtitle">Todo lo que necesitas en una sola app</p>
+
+    <div class="features">
+        <div class="feature-card">
+            <span class="feature-icon">💬</span>
+            <div class="feature-title">Chat inteligente</div>
+            <p class="feature-desc">Conversaciones naturales con IA de última generación. Historial persistente.</p>
+        </div>
+
+        <div class="feature-card">
+            <span class="feature-icon">📷</span>
+            <div class="feature-title">Análisis de imágenes</div>
+            <p class="feature-desc">Envía fotos y la IA las describe, analiza y transcribe su texto.</p>
+        </div>
+
+        <div class="feature-card">
+            <span class="feature-icon">🎤</span>
+            <div class="feature-title">Mensajes de voz</div>
+            <p class="feature-desc">Graba audios estilo WhatsApp. La IA los transcribe y responde.</p>
+        </div>
+
+        <div class="feature-card">
+            <span class="feature-icon">🔊</span>
+            <div class="feature-title">Texto a voz</div>
+            <p class="feature-desc">Escucha las respuestas en voz alta. Con botón para detener cuando quieras.</p>
+        </div>
+
+        <div class="feature-card">
+            <span class="feature-icon">🧠</span>
+            <div class="feature-title">Pensamiento profundo</div>
+            <p class="feature-desc">Modo DeepThink para razonamientos paso a paso y respuestas más elaboradas.</p>
+        </div>
+
+        <div class="feature-card">
+            <span class="feature-icon">🌍</span>
+            <div class="feature-title">Multi-idioma</div>
+            <p class="feature-desc">Español, English y Français. Cambia el idioma en cualquier momento.</p>
+        </div>
+
+        <div class="feature-card">
+            <span class="feature-icon">🎨</span>
+            <div class="feature-title">3 temas</div>
+            <p class="feature-desc">Oscuro, Claro y Medianoche. Personaliza la app a tu gusto.</p>
+        </div>
+
+        <div class="feature-card">
+            <span class="feature-icon">📎</span>
+            <div class="feature-title">Menú File animado</div>
+            <p class="feature-desc">Botón 📎 que despliega Cámara, Audio, TTS y Detener con animación fluida.</p>
+        </div>
+
+        <div class="feature-card">
+            <span class="feature-icon">💰</span>
+            <div class="feature-title">100% gratis</div>
+            <p class="feature-desc">Usa modelos gratuitos de OpenRouter. Sin costes ocultos ni suscripciones.</p>
+        </div>
+    </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section id="screenshots" class="fade-in">
+    <h2 class="section-title">📱 Capturas</h2>
+    <p class="section-subtitle">Así se ve Ultra AI Pro</p>
+
+    <div class="screenshots">
+        <div class="screenshot">
+            <div class="screenshot-screen">
+                <div class="mock-header">
+                    <div class="mock-dot">🧠</div>
+                    <div class="mock-bar"></div>
+                </div>
+                <div class="mock-bubble user">Hola, ¿cómo estás?</div>
+                <div class="mock-bubble bot">¡Hola! Estoy bien, gracias por preguntar. ¿En qué puedo ayudarte?</div>
+                <div class="mock-bubble user">Cuéntame un chiste</div>
+                <div class="mock-bubble bot">¿Por qué los programadores prefieren el modo oscuro? Porque la luz atrae a los bugs 😄</div>
+            </div>
+            <div class="mock-label">Chat</div>
+        </div>
+
+        <div class="screenshot">
+            <div class="screenshot-screen">
+                <div class="mock-header">
+                    <div class="mock-dot">⋮</div>
+                    <div class="mock-bar"></div>
+                </div>
+                <div class="mock-bubble bot">💬 Conversaciones</div>
+                <div class="mock-bubble user">Código Python</div>
+                <div class="mock-bubble bot">💬 Receta de paella</div>
+                <div class="mock-bubble bot">💬 Ideas de negocio</div>
+                <div class="mock-bubble bot">💬 Historia de Roma</div>
+            </div>
+            <div class="mock-label">Historial</div>
+        </div>
+
+        <div class="screenshot">
+            <div class="screenshot-screen">
+                <div class="mock-header">
+                    <div class="mock-dot">⚙️</div>
+                    <div class="mock-bar"></div>
+                </div>
+                <div class="mock-bubble bot">🌍 Idioma: Español</div>
+                <div class="mock-bubble bot">🎨 Tema: Oscuro</div>
+                <div class="mock-bubble bot">🤖 Modelo: Nemotron</div>
+                <div class="mock-bubble bot">🌡️ Temperatura: 0.7</div>
+                <div class="mock-bubble bot">🔔 Vibración: ON</div>
+            </div>
+            <div class="mock-label">Configuración</div>
+        </div>
+
+        <div class="screenshot">
+            <div class="screenshot-screen">
+                <div class="mock-header">
+                    <div class="mock-dot">📎</div>
+                    <div class="mock-bar"></div>
+                </div>
+                <div class="mock-bubble user">📎 File</div>
+                <div class="mock-bubble bot">📷 Cámara</div>
+                <div class="mock-bubble bot">🎤 Audio</div>
+                <div class="mock-bubble bot">🔊 TTS · ⏹️ Parar</div>
+                <div class="mock-bubble user">Menú File animado</div>
+            </div>
+            <div class="mock-label">Menú File</div>
+        </div>
+    </div>
+</section>
+
+<!-- CHANGELOG -->
+<section id="changelog" class="fade-in">
+    <h2 class="section-title">📋 Lista de cambios</h2>
+    <p class="section-subtitle">Primera versión pública</p>
+
+    <div class="changelog">
+        <div class="changelog-item">
+            <div class="changelog-version">v1.0 Beta — PRIMERA VERSIÓN</div>
+            <ul>
+                <li>🌍 Multi-idioma: Español, English, Français</li>
+                <li>🎨 3 temas: Oscuro, Claro, Medianoche</li>
+                <li>🧠 Pensamiento profundo (DeepThink)</li>
+                <li>📂 Menú lateral de conversaciones</li>
+                <li>💬 Historial persistente con borrado individual</li>
+                <li>📎 Menú File animado (📷 · 🎤 · 🔊 · ⏹️)</li>
+                <li>📷 Análisis de imágenes con IA</li>
+                <li>🎤 Grabación de audio + transcripción</li>
+                <li>🔊 Texto a voz con botón detener</li>
+                <li>🔒 API Key ofuscada en Base64</li>
+                <li>💰 100% gratis con modelos de OpenRouter</li>
+                <li>📦 Solo 60 KB de peso</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- DOWNLOAD -->
+<section id="download" class="fade-in">
+    <div class="download-box">
+        <h2>⬇️ Descargar Ultra AI Pro v1.0 Beta</h2>
+        <p>Descarga el APK directamente desde MediaFire</p>
+
+        <a href="TU_ENLACE_MEDIAFIRE" target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 18px; padding: 18px 40px;">
+            <span>📥</span> Descargar desde MediaFire
+        </a>
+
+        <div class="download-notes">
+            <strong>📱 Requisitos:</strong> Android 5.0 o superior<br>
+            <strong>📦 Tamaño:</strong> ~60 KB<br>
+            <strong>🔒 Seguridad:</strong> Activa "Orígenes desconocidos" en Ajustes<br>
+            <strong>💰 Precio:</strong> Completamente gratis<br>
+            <strong>⚠️ Nota:</strong> Versión beta — puede contener errores
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>🧠 <strong>Ultra AI Pro</strong> v1.0 Beta</p>
+    <p>Creado con <span class="heart">❤</span> por <strong>Alejandro Eng</strong> · Cuba · 2026</p>
+    <p style="margin-top: 16px; font-size: 12px;">
+        © 2026 Alejandro Eng. Todos los derechos reservados.
+    </p>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
