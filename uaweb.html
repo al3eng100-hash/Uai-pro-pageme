@@ -911,12 +911,13 @@ const API_KEY_PARTS = [
 function getApiKey() {
     return API_KEY_PARTS.map(p => atob(p)).join('');
 }
-
 const MODELS = [
+    { id: "openrouter/free", name: "Router Free (auto)" },
     { id: "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free", name: "Nemotron Nano Omni" },
     { id: "inclusionai/ling-3.0-flash-vl:free", name: "Ling 3.0 Flash VL" },
     { id: "dots-studio/dots-3-note-preview:free", name: "Dots3-Note" }
 ];
+
 
 // ============================================
 // IDIOMAS
