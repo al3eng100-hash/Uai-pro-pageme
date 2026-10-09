@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ultra AI Pro v1.0  — La IA más ligera</title>
+<title>Ultra AI Pro v1.0 Beta — La IA más ligera</title>
 <meta name="description" content="Ultra AI Pro: chat con IA, imágenes, audio y texto a voz. 60 KB. Creado por Alejandro Eng.">
 
 <!-- ICONO: reemplaza esta URL por la de tu imagen -->
@@ -226,6 +226,30 @@
         box-shadow: 0 15px 40px rgba(56, 189, 248, 0.6);
     }
 
+    .btn-web {
+        background: linear-gradient(135deg, var(--verde), var(--acento));
+        color: #FFFFFF;
+        box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-web::before {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: left 0.5s;
+    }
+
+    .btn-web:hover::before { left: 100%; }
+
+    .btn-web:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(34, 197, 94, 0.6);
+    }
+
     .btn-secondary {
         background: var(--tarjeta);
         color: var(--texto);
@@ -309,6 +333,25 @@
         font-size: 14px;
         color: var(--subtext);
         line-height: 1.6;
+    }
+
+    .feature-link {
+        display: inline-block;
+        margin-top: 12px;
+        padding: 10px 20px;
+        background: var(--verde);
+        color: white;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 13px;
+        transition: all 0.2s;
+    }
+
+    .feature-link:hover {
+        background: var(--acento);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(34, 197, 94, 0.4);
     }
 
     .screenshots {
@@ -453,6 +496,25 @@
 
     .download-notes strong { color: var(--texto); }
 
+    .web-box {
+        background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(56, 189, 248, 0.1));
+        border: 1px solid rgba(34, 197, 94, 0.3);
+        border-radius: 24px;
+        padding: 48px 32px;
+        text-align: center;
+        margin-top: 24px;
+    }
+
+    .web-box h2 {
+        font-size: clamp(22px, 4vw, 32px);
+        margin-bottom: 12px;
+    }
+
+    .web-box p {
+        color: var(--subtext);
+        margin-bottom: 28px;
+    }
+
     .changelog {
         max-width: 800px;
         margin: 0 auto;
@@ -545,7 +607,7 @@
     <div class="nav-container">
         <a href="#" class="logo">
             <div class="logo-icon">
-                <img src="ic_launcher.png" alt="Icono">
+                <img src="URL_DEL_ICONO" alt="Icono">
             </div>
             <span>Ultra AI Pro</span>
         </a>
@@ -554,6 +616,7 @@
             <li><a href="#screenshots">Capturas</a></li>
             <li><a href="#changelog">Cambios</a></li>
             <li><a href="#download">Descargar</a></li>
+            <li><a href="uaweb.html">Versión Web</a></li>
         </ul>
     </div>
 </nav>
@@ -565,7 +628,7 @@
     </div>
 
     <div class="hero-icon">
-        <img src="ic_launcher.png" alt="Ultra AI Pro">
+        <img src="URL_DEL_ICONO" alt="Ultra AI Pro">
     </div>
 
     <h1>Ultra AI Pro</h1>
@@ -575,8 +638,11 @@
     </p>
 
     <div class="buttons">
-        <a href="https://www.mediafire.com/file/cae47wiaduge1dd/Ultra+AI+Pro_1.0.apk/file" class="btn btn-primary">
+        <a href="#download" class="btn btn-primary">
             <span>⬇️</span> Descargar APK
+        </a>
+        <a href="uaweb.html" class="btn btn-web">
+            <span>🌐</span> Abrir versión web
         </a>
         <a href="#features" class="btn btn-secondary">
             <span>📖</span> Ver características
@@ -661,6 +727,16 @@
             <span class="feature-icon">💰</span>
             <div class="feature-title">100% gratis</div>
             <p class="feature-desc">Usa modelos gratuitos de OpenRouter. Sin costes ocultos ni suscripciones.</p>
+        </div>
+
+        <!-- NUEVA: Versión web -->
+        <div class="feature-card" style="border-color: rgba(34, 197, 94, 0.3);">
+            <span class="feature-icon">🌐</span>
+            <div class="feature-title">Versión Web disponible</div>
+            <p class="feature-desc">
+                Úsala desde tu PC sin descargar nada. Mismas funciones que el APK.
+            </p>
+            <a href="uaweb.html" class="feature-link">🌐 Abrir Ultra AI Pro Web</a>
         </div>
     </div>
 </section>
@@ -753,18 +829,19 @@
                 <li>🔒 API Key ofuscada en Base64</li>
                 <li>💰 100% gratis con modelos de OpenRouter</li>
                 <li>📦 Solo 60 KB de peso</li>
+                <li>🌐 Versión web disponible en uaweb.html</li>
             </ul>
         </div>
     </div>
 </section>
 
-<!-- DOWNLOAD -->
+<!-- DOWNLOAD APK -->
 <section id="download" class="fade-in">
     <div class="download-box">
         <h2>⬇️ Descargar Ultra AI Pro v1.0 Beta</h2>
         <p>Descarga el APK directamente desde MediaFire</p>
 
-        <a href="https://www.mediafire.com/file/cae47wiaduge1dd/Ultra+AI+Pro_1.0.apk/file" target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 18px; padding: 18px 40px;">
+        <a href="TU_ENLACE_MEDIAFIRE" target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 18px; padding: 18px 40px;">
             <span>📥</span> Descargar desde MediaFire
         </a>
 
@@ -774,6 +851,23 @@
             <strong>🔒 Seguridad:</strong> Activa "Orígenes desconocidos" en Ajustes<br>
             <strong>💰 Precio:</strong> Completamente gratis<br>
             <strong>⚠️ Nota:</strong> Versión beta — puede contener errores
+        </div>
+    </div>
+
+    <!-- VERSIÓN WEB -->
+    <div class="web-box">
+        <h2>🌐 Probar la versión web</h2>
+        <p>Úsala desde tu PC sin instalar nada. Mismas funciones que el APK</p>
+
+        <a href="uaweb.html" class="btn btn-web" style="font-size: 18px; padding: 18px 40px;">
+            <span>🌐</span> Abrir Ultra AI Pro Web
+        </a>
+
+        <div class="download-notes">
+            <strong>💻 Compatible:</strong> Chrome, Firefox, Edge, Safari<br>
+            <strong>🎯 Funciones:</strong> Chat · Imágenes · Audio · TTS · DeepThink<br>
+            <strong>💰 Precio:</strong> Completamente gratis<br>
+            <strong>🔒 Privacidad:</strong> Historial guardado en tu navegador
         </div>
     </div>
 </section>
