@@ -4,15 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ultra AI Pro v1.0 Beta — La IA más ligera</title>
-<meta name="description" content="Ultra AI Pro: chat con IA, imágenes, audio y texto a voz. 60 KB. Creado por Alejandro Eng.">
+<meta name="description" content="Ultra AI Pro: chat con IA, imágenes, audio y texto a voz. Traductor incluido. 60 KB. Creado por Alejandro Eng.">
 
-<!-- ICONO: reemplaza esta URL por la de tu imagen -->
 <link rel="icon" type="image/png" href="URL_DEL_ICONO">
 <link rel="apple-touch-icon" href="URL_DEL_ICONO">
-
-<!-- Open Graph para compartir en redes -->
 <meta property="og:title" content="Ultra AI Pro v1.0 Beta">
-<meta property="og:description" content="La IA más ligera de todas. 60 KB. 100% gratis.">
+<meta property="og:description" content="La IA más ligera de todas. Chat, traductor, imágenes, audio. 100% gratis.">
 <meta property="og:image" content="URL_DEL_ICONO">
 <meta property="og:type" content="website">
 
@@ -27,6 +24,7 @@
         --rojo: #EF4444;
         --ambar: #F59E0B;
         --violeta: #8B5CF6;
+        --rosa: #EC4899;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -250,6 +248,30 @@
         box-shadow: 0 15px 40px rgba(34, 197, 94, 0.6);
     }
 
+    .btn-translator {
+        background: linear-gradient(135deg, var(--ambar), var(--rosa));
+        color: #FFFFFF;
+        box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-translator::before {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: left 0.5s;
+    }
+
+    .btn-translator:hover::before { left: 100%; }
+
+    .btn-translator:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(245, 158, 11, 0.6);
+    }
+
     .btn-secondary {
         background: var(--tarjeta);
         color: var(--texto);
@@ -354,6 +376,116 @@
         box-shadow: 0 5px 15px rgba(34, 197, 94, 0.4);
     }
 
+    /* ===== SECCIÓN DE APPS ===== */
+    .apps-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 24px;
+        margin-top: 40px;
+    }
+
+    .app-card {
+        background: var(--tarjeta);
+        border-radius: 24px;
+        padding: 32px 28px;
+        border: 2px solid rgba(148, 163, 184, 0.1);
+        text-align: center;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .app-card.main-app {
+        border-color: rgba(56, 189, 248, 0.3);
+    }
+
+    .app-card.translator-app {
+        border-color: rgba(245, 158, 11, 0.3);
+    }
+
+    .app-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .app-card.main-app:hover {
+        border-color: var(--acento);
+        box-shadow: 0 25px 60px rgba(56, 189, 248, 0.3);
+    }
+
+    .app-card.translator-app:hover {
+        border-color: var(--ambar);
+        box-shadow: 0 25px 60px rgba(245, 158, 11, 0.3);
+    }
+
+    .app-card-icon {
+        font-size: 72px;
+        line-height: 1;
+        margin-bottom: 16px;
+        display: block;
+    }
+
+    .app-card-title {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: var(--texto);
+    }
+
+    .app-card-desc {
+        font-size: 14px;
+        color: var(--subtext);
+        margin-bottom: 20px;
+        line-height: 1.6;
+    }
+
+    .app-card-features {
+        text-align: left;
+        margin: 20px 0;
+        padding: 16px;
+        background: var(--fondo);
+        border-radius: 12px;
+        font-size: 13px;
+        color: var(--subtext);
+    }
+
+    .app-card-features li {
+        list-style: none;
+        padding: 4px 0;
+    }
+
+    .app-card-features li::before {
+        content: '✓ ';
+        color: var(--verde);
+        font-weight: bold;
+    }
+
+    .app-card-badge {
+        display: inline-block;
+        background: var(--fondo);
+        color: var(--subtext);
+        font-size: 11px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        margin-bottom: 16px;
+        font-weight: 600;
+    }
+
+    .app-card-badge.beta {
+        background: rgba(34, 197, 94, 0.15);
+        color: var(--verde);
+    }
+
+    .app-card-badge.new {
+        background: rgba(245, 158, 11, 0.15);
+        color: var(--ambar);
+    }
+
+    .app-card .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
     .screenshots {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -432,6 +564,11 @@
 
     .mock-bubble.bot {
         border: 1px solid rgba(34, 197, 94, 0.3);
+    }
+
+    .mock-bubble.translator {
+        border: 1px solid rgba(245, 158, 11, 0.4);
+        background: rgba(245, 158, 11, 0.1);
     }
 
     .mock-label {
@@ -534,11 +671,19 @@
         transform: translateX(6px);
     }
 
+    .changelog-item.translator {
+        border-left-color: var(--ambar);
+    }
+
     .changelog-version {
         font-weight: 700;
         color: var(--verde);
         font-size: 15px;
         margin-bottom: 8px;
+    }
+
+    .changelog-item.translator .changelog-version {
+        color: var(--ambar);
     }
 
     .changelog-item ul { list-style: none; padding: 0; }
@@ -552,6 +697,10 @@
     .changelog-item li::before {
         content: '→ ';
         color: var(--acento);
+    }
+
+    .changelog-item.translator li::before {
+        color: var(--ambar);
     }
 
     footer {
@@ -586,6 +735,7 @@
         .btn { justify-content: center; }
         section { padding: 40px 20px; }
         .info-box { padding: 24px; }
+        .app-card { padding: 24px 20px; }
     }
 
     .fade-in {
@@ -607,11 +757,12 @@
     <div class="nav-container">
         <a href="#" class="logo">
             <div class="logo-icon">
-                <img src="ic_launcher.png" alt="Icono">
+                <img src="URL_DEL_ICONO" alt="Icono">
             </div>
             <span>Ultra AI Pro</span>
         </a>
         <ul class="nav-links">
+            <li><a href="#apps">Apps</a></li>
             <li><a href="#features">Características</a></li>
             <li><a href="#screenshots">Capturas</a></li>
             <li><a href="#changelog">Cambios</a></li>
@@ -624,21 +775,21 @@
 <!-- HERO -->
 <header class="hero">
     <div class="badge">
-        <span>🚀</span> Versión 1.0 Beta — Primera versión
+        <span>🚀</span> Versión 1.0 Beta — 2 Apps disponibles
     </div>
 
     <div class="hero-icon">
-        <img src="ic_launcher.png" alt="Ultra AI Pro">
+        <img src="URL_DEL_ICONO" alt="Ultra AI Pro">
     </div>
 
     <h1>Ultra AI Pro</h1>
     <p class="subtitle">
-        La IA más ligera de todas. Chat, imágenes, audio y texto a voz en una sola app.
+        La IA más ligera de todas. Chat, traductor, imágenes, audio y texto a voz.
         Solo 60 KB. 100% gratis.
     </p>
 
     <div class="buttons">
-        <a href="#download" class="btn btn-primary">
+        <a href="#apps" class="btn btn-primary">
             <span>⬇️</span> Descargar APK
         </a>
         <a href="uaweb.html" class="btn btn-web">
@@ -659,8 +810,8 @@
             <div class="info-label">Compatibilidad</div>
         </div>
         <div class="info-item">
-            <div class="info-value">100%</div>
-            <div class="info-label">Gratis</div>
+            <div class="info-value">2</div>
+            <div class="info-label">Apps disponibles</div>
         </div>
         <div class="info-item">
             <div class="info-value">3</div>
@@ -668,6 +819,62 @@
         </div>
     </div>
 </header>
+
+<!-- SECCIÓN DE APPS -->
+<section id="apps" class="fade-in">
+    <h2 class="section-title">📱 Nuestras Apps</h2>
+    <p class="section-subtitle">Dos aplicaciones, un mismo estilo</p>
+
+    <div class="apps-grid">
+
+        <!-- APP 1: Ultra AI Pro -->
+        <div class="app-card main-app">
+            <span class="app-card-badge beta">● BETA</span>
+            <span class="app-card-icon">🧠</span>
+            <div class="app-card-title">Ultra AI Pro</div>
+            <p class="app-card-desc">
+                Chat con IA, imágenes, audio y texto a voz. La app todo-en-uno.
+            </p>
+
+            <ul class="app-card-features">
+                <li>💬 Chat inteligente con IA</li>
+                <li>📷 Análisis de imágenes</li>
+                <li>🎤 Mensajes de voz</li>
+                <li>🔊 Texto a voz</li>
+                <li>🧠 Pensamiento profundo</li>
+                <li>🌍 3 idiomas</li>
+            </ul>
+
+            <a href="TU_ENLACE_MEDIAFIRE" target="_blank" rel="noopener" class="btn btn-primary">
+                <span>⬇️</span> Descargar APK
+            </a>
+        </div>
+
+        <!-- APP 2: Ultra AI Pro Traductor -->
+        <div class="app-card translator-app">
+            <span class="app-card-badge new">✨ NUEVO</span>
+            <span class="app-card-icon">🌐</span>
+            <div class="app-card-title">Ultra AI Pro Traductor</div>
+            <p class="app-card-desc">
+                Traduce entre más de 30 idiomas con voz, imágenes y texto a voz.
+            </p>
+
+            <ul class="app-card-features">
+                <li>🌍 30+ idiomas disponibles</li>
+                <li>🔄 Swap de idiomas</li>
+                <li>🎤 Traducción por voz</li>
+                <li>🔊 Escuchar traducción</li>
+                <li>📚 Historial de traducciones</li>
+                <li>⚡ Auto-detección de idioma</li>
+            </ul>
+
+            <a href="TU_ENLACE_MEDIAFIRE_TRADUCTOR" target="_blank" rel="noopener" class="btn btn-translator">
+                <span>⬇️</span> Descargar APK
+            </a>
+        </div>
+
+    </div>
+</section>
 
 <!-- FEATURES -->
 <section id="features" class="fade-in">
@@ -679,6 +886,12 @@
             <span class="feature-icon">💬</span>
             <div class="feature-title">Chat inteligente</div>
             <p class="feature-desc">Conversaciones naturales con IA de última generación. Historial persistente.</p>
+        </div>
+
+        <div class="feature-card">
+            <span class="feature-icon">🌐</span>
+            <div class="feature-title">Traductor integrado</div>
+            <p class="feature-desc">Traduce entre más de 30 idiomas. Con voz, imágenes y texto a voz.</p>
         </div>
 
         <div class="feature-card">
@@ -718,18 +931,11 @@
         </div>
 
         <div class="feature-card">
-            <span class="feature-icon">📎</span>
-            <div class="feature-title">Menú File animado</div>
-            <p class="feature-desc">Botón 📎 que despliega Cámara, Audio, TTS y Detener con animación fluida.</p>
-        </div>
-
-        <div class="feature-card">
             <span class="feature-icon">💰</span>
             <div class="feature-title">100% gratis</div>
             <p class="feature-desc">Usa modelos gratuitos de OpenRouter. Sin costes ocultos ni suscripciones.</p>
         </div>
 
-        <!-- NUEVA: Versión web -->
         <div class="feature-card" style="border-color: rgba(34, 197, 94, 0.3);">
             <span class="feature-icon">🌐</span>
             <div class="feature-title">Versión Web disponible</div>
@@ -744,7 +950,7 @@
 <!-- SCREENSHOTS -->
 <section id="screenshots" class="fade-in">
     <h2 class="section-title">📱 Capturas</h2>
-    <p class="section-subtitle">Así se ve Ultra AI Pro</p>
+    <p class="section-subtitle">Así se ven nuestras apps</p>
 
     <div class="screenshots">
         <div class="screenshot">
@@ -764,16 +970,17 @@
         <div class="screenshot">
             <div class="screenshot-screen">
                 <div class="mock-header">
-                    <div class="mock-dot">⋮</div>
+                    <div class="mock-dot">🌐</div>
                     <div class="mock-bar"></div>
                 </div>
-                <div class="mock-bubble bot">💬 Conversaciones</div>
-                <div class="mock-bubble user">Código Python</div>
-                <div class="mock-bubble bot">💬 Receta de paella</div>
-                <div class="mock-bubble bot">💬 Ideas de negocio</div>
-                <div class="mock-bubble bot">💬 Historia de Roma</div>
+                <div class="mock-bubble user">Hello world</div>
+                <div class="mock-bubble translator">→ Hola mundo</div>
+                <div class="mock-bubble user">Bonjour</div>
+                <div class="mock-bubble translator">→ Hello</div>
+                <div class="mock-bubble user">Gracias</div>
+                <div class="mock-bubble translator">→ Thank you</div>
             </div>
-            <div class="mock-label">Historial</div>
+            <div class="mock-label">Traductor</div>
         </div>
 
         <div class="screenshot">
@@ -784,7 +991,7 @@
                 </div>
                 <div class="mock-bubble bot">🌍 Idioma: Español</div>
                 <div class="mock-bubble bot">🎨 Tema: Oscuro</div>
-                <div class="mock-bubble bot">🤖 Modelo: Nemotron</div>
+                <div class="mock-bubble bot">🤖 Modelo: Router Free</div>
                 <div class="mock-bubble bot">🌡️ Temperatura: 0.7</div>
                 <div class="mock-bubble bot">🔔 Vibración: ON</div>
             </div>
@@ -794,16 +1001,16 @@
         <div class="screenshot">
             <div class="screenshot-screen">
                 <div class="mock-header">
-                    <div class="mock-dot">📎</div>
+                    <div class="mock-dot">📚</div>
                     <div class="mock-bar"></div>
                 </div>
-                <div class="mock-bubble user">📎 File</div>
-                <div class="mock-bubble bot">📷 Cámara</div>
-                <div class="mock-bubble bot">🎤 Audio</div>
-                <div class="mock-bubble bot">🔊 TTS · ⏹️ Parar</div>
-                <div class="mock-bubble user">Menú File animado</div>
+                <div class="mock-bubble bot">🌍 Historique</div>
+                <div class="mock-bubble user">Hello</div>
+                <div class="mock-bubble translator">→ Bonjour</div>
+                <div class="mock-bubble user">Merci</div>
+                <div class="mock-bubble translator">→ Gracias</div>
             </div>
-            <div class="mock-label">Menú File</div>
+            <div class="mock-label">Historial</div>
         </div>
     </div>
 </section>
@@ -811,11 +1018,24 @@
 <!-- CHANGELOG -->
 <section id="changelog" class="fade-in">
     <h2 class="section-title">📋 Lista de cambios</h2>
-    <p class="section-subtitle">Primera versión pública</p>
+    <p class="section-subtitle">Lo nuevo en nuestras apps</p>
 
     <div class="changelog">
+        <div class="changelog-item translator">
+            <div class="changelog-version">🌐 Ultra AI Pro Traductor v1.0 Beta — NUEVO</div>
+            <ul>
+                <li>🌍 30+ idiomas disponibles</li>
+                <li>🔄 Botón de intercambio de idiomas</li>
+                <li>🎤 Traducción por voz</li>
+                <li>🔊 Escuchar traducción con TTS</li>
+                <li>📚 Historial de traducciones</li>
+                <li>🌐 3 idiomas de interfaz: ES · EN · FR</li>
+                <li>🎨 3 temas personalizables</li>
+            </ul>
+        </div>
+
         <div class="changelog-item">
-            <div class="changelog-version">v1.0 Beta — PRIMERA VERSIÓN</div>
+            <div class="changelog-version">🧠 Ultra AI Pro v1.0 Beta</div>
             <ul>
                 <li>🌍 Multi-idioma: Español, English, Français</li>
                 <li>🎨 3 temas: Oscuro, Claro, Medianoche</li>
@@ -829,25 +1049,29 @@
                 <li>🔒 API Key ofuscada en Base64</li>
                 <li>💰 100% gratis con modelos de OpenRouter</li>
                 <li>📦 Solo 60 KB de peso</li>
-                <li>🌐 Versión web disponible en uaweb.html</li>
             </ul>
         </div>
     </div>
 </section>
 
-<!-- DOWNLOAD APK -->
+<!-- DOWNLOAD -->
 <section id="download" class="fade-in">
     <div class="download-box">
-        <h2>⬇️ Descargar Ultra AI Pro v1.0 Beta</h2>
+        <h2>⬇️ Descargar Ultra AI Pro</h2>
         <p>Descarga el APK directamente desde MediaFire</p>
 
-        <a href="https://www.mediafire.com/file/fyd9wodbi9ajchg/Ultra+AI+Pro_1.0.apk/file" target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 18px; padding: 18px 40px;">
-            <span>📥</span> Descargar desde MediaFire
-        </a>
+        <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+            <a href="https://www.mediafire.com/file/fyd9wodbi9ajchg/Ultra+AI+Pro_1.0.apk/file" target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 16px; padding: 16px 32px;">
+                <span>🧠</span> Ultra AI Pro
+            </a>
+            <a href="TU_ENLACE_MEDIAFIRE_TRADUCTOR" target="_blank" rel="noopener" class="btn btn-translator" style="font-size: 16px; padding: 16px 32px;">
+                <span>🌐</span> Ultra AI Traductor
+            </a>
+        </div>
 
         <div class="download-notes">
             <strong>📱 Requisitos:</strong> Android 5.0 o superior<br>
-            <strong>📦 Tamaño:</strong> ~60 KB<br>
+            <strong>📦 Tamaños:</strong> ~60 KB · ~70 KB<br>
             <strong>🔒 Seguridad:</strong> Activa "Orígenes desconocidos" en Ajustes<br>
             <strong>💰 Precio:</strong> Completamente gratis<br>
             <strong>⚠️ Nota:</strong> Versión beta — puede contener errores
@@ -859,7 +1083,7 @@
         <h2>🌐 Probar la versión web</h2>
         <p>Úsala desde tu PC sin instalar nada. Mismas funciones que el APK</p>
 
-        <a href="uawb.html" class="btn btn-web" style="font-size: 18px; padding: 18px 40px;">
+        <a href="uaweb.html" class="btn btn-web" style="font-size: 18px; padding: 18px 40px;">
             <span>🌐</span> Abrir Ultra AI Pro Web
         </a>
 
@@ -874,7 +1098,7 @@
 
 <!-- FOOTER -->
 <footer>
-    <p>🧠 <strong>Ultra AI Pro</strong> v1.0 Beta</p>
+    <p>🧠 <strong>Ultra AI Pro</strong> v1.0 Beta · 🌐 <strong>Traductor</strong> v1.0 Beta</p>
     <p>Creado con <span class="heart">❤</span> por <strong>Alejandro Eng</strong> · Cuba · 2026</p>
     <p style="margin-top: 16px; font-size: 12px;">
         © 2026 Alejandro Eng. Todos los derechos reservados.
