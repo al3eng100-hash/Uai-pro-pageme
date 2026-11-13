@@ -3,13 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ultra AI Pro v1.0 Beta — La IA más ligera</title>
-<meta name="description" content="Ultra AI Pro: chat con IA, imágenes, audio y texto a voz. Traductor incluido. 60 KB. Creado por Alejandro Eng.">
+<title>Ultra AI Pro v1.0 Oficial — La IA más ligera</title>
+<meta name="description" content="Ultra AI Pro y Ultra AI Traductor: Chat, imágenes, audio y texto a voz. 100% gratis. Oficial. Creado por Alejandro Eng.">
 
+<!-- ICONO DE LA APP -->
 <link rel="icon" type="image/png" href="ic_launcher.PNG">
 <link rel="apple-touch-icon" href="ic_launcher.PNG">
-<meta property="og:title" content="Ultra AI Pro v1.0 Beta">
-<meta property="og:description" content="La IA más ligera de todas. Chat, traductor, imágenes, audio. 100% gratis.">
+
+<!-- Open Graph para redes sociales -->
+<meta property="og:title" content="Ultra AI Pro v1.0 Oficial">
+<meta property="og:description" content="La IA más ligera de todas. Chat, traductor, imágenes y audio. Oficial y 100% gratis.">
 <meta property="og:image" content="ic_launcher.PNG">
 <meta property="og:type" content="website">
 
@@ -38,14 +41,15 @@
         overflow-x: hidden;
     }
 
+    /* Fondo animado más profundo */
     body::before {
         content: '';
         position: fixed;
         top: 0; left: 0; right: 0; bottom: 0;
         background:
-            radial-gradient(circle at 20% 20%, rgba(56,189,248,0.12) 0%, transparent 40%),
-            radial-gradient(circle at 80% 80%, rgba(139,92,246,0.12) 0%, transparent 40%),
-            radial-gradient(circle at 50% 50%, rgba(34,197,94,0.06) 0%, transparent 50%);
+            radial-gradient(circle at 10% 10%, rgba(56,189,248,0.15) 0%, transparent 40%),
+            radial-gradient(circle at 90% 90%, rgba(139,92,246,0.15) 0%, transparent 40%),
+            radial-gradient(circle at 50% 50%, rgba(34,197,94,0.08) 0%, transparent 50%);
         z-index: -1;
         pointer-events: none;
     }
@@ -54,9 +58,9 @@
     nav {
         position: sticky;
         top: 0;
-        background: rgba(15, 23, 42, 0.85);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+        background: rgba(15, 23, 42, 0.75);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
         border-bottom: 1px solid rgba(148, 163, 184, 0.1);
         padding: 16px 24px;
         z-index: 100;
@@ -81,15 +85,12 @@
     }
 
     .logo-icon {
-        width: 36px;
-        height: 36px;
+        width: 40px; height: 40px;
         background: linear-gradient(135deg, var(--acento), var(--violeta));
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        border-radius: 12px;
+        display: flex; align-items: center; justify-content: center;
         font-size: 20px;
-        box-shadow: 0 4px 20px rgba(56, 189, 248, 0.3);
+        box-shadow: 0 4px 20px rgba(56, 189, 248, 0.4);
         overflow: hidden;
     }
 
@@ -105,6 +106,7 @@
         color: var(--subtext);
         text-decoration: none;
         font-size: 14px;
+        font-weight: 500;
         transition: color 0.2s;
     }
 
@@ -114,7 +116,7 @@
     .hero {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 80px 24px 60px;
+        padding: 100px 24px 60px;
         text-align: center;
     }
 
@@ -123,630 +125,235 @@
         align-items: center;
         gap: 8px;
         background: rgba(56, 189, 248, 0.1);
-        border: 1px solid rgba(56, 189, 248, 0.3);
-        padding: 8px 16px;
+        border: 1px solid rgba(56, 189, 248, 0.4);
+        padding: 10px 22px;
         border-radius: 999px;
-        font-size: 13px;
+        font-size: 14px;
         color: var(--acento);
-        margin-bottom: 24px;
+        margin-bottom: 32px;
+        font-weight: 600;
         animation: float 3s ease-in-out infinite;
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
     }
 
     @keyframes float {
         0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-4px); }
+        50% { transform: translateY(-6px); }
     }
 
     .hero-icon {
-        width: 120px;
-        height: 120px;
-        margin: 0 auto 20px;
-        border-radius: 28px;
+        width: 140px; height: 140px;
+        margin: 0 auto 28px;
+        border-radius: 36px;
         overflow: hidden;
-        box-shadow: 0 20px 60px rgba(56, 189, 248, 0.4);
+        box-shadow: 0 25px 70px rgba(56, 189, 248, 0.5);
         animation: pulse 4s ease-in-out infinite;
         background: linear-gradient(135deg, var(--acento), var(--violeta));
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 64px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 75px;
     }
 
     .hero-icon img { width: 100%; height: 100%; object-fit: cover; }
 
     @keyframes pulse {
         0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.05); }
+        50% { transform: scale(1.06); }
     }
 
     h1 {
-        font-size: clamp(32px, 6vw, 56px);
+        font-size: clamp(40px, 7vw, 72px);
         font-weight: 800;
         margin-bottom: 16px;
-        background: linear-gradient(135deg, #FFFFFF 0%, var(--acento) 50%, var(--violeta) 100%);
+        background: linear-gradient(135deg, #FFFFFF 0%, var(--acento) 40%, var(--violeta) 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        letter-spacing: -0.02em;
+        letter-spacing: -0.04em;
     }
 
     .subtitle {
         font-size: clamp(16px, 2.5vw, 20px);
         color: var(--subtext);
-        max-width: 640px;
-        margin: 0 auto 40px;
+        max-width: 650px;
+        margin: 0 auto 48px;
     }
 
+    /* BOTONES */
     .buttons {
         display: flex;
         gap: 16px;
         justify-content: center;
         flex-wrap: wrap;
-        margin-bottom: 60px;
+        margin-bottom: 80px;
     }
 
     .btn {
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        padding: 16px 28px;
-        border-radius: 14px;
+        padding: 18px 36px;
+        border-radius: 16px;
         font-size: 16px;
         font-weight: 600;
         text-decoration: none;
         border: none;
         cursor: pointer;
-        transition: all 0.25s ease;
-        font-family: inherit;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .btn-primary {
         background: linear-gradient(135deg, var(--acento), var(--violeta));
         color: #FFFFFF;
-        box-shadow: 0 10px 30px rgba(56, 189, 248, 0.4);
-        position: relative;
-        overflow: hidden;
+        box-shadow: 0 12px 35px rgba(56, 189, 248, 0.4);
     }
-
-    .btn-primary::before {
-        content: '';
-        position: absolute;
-        top: 0; left: -100%;
-        width: 100%; height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-        transition: left 0.5s;
-    }
-
-    .btn-primary:hover::before { left: 100%; }
-
-    .btn-primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 15px 40px rgba(56, 189, 248, 0.6);
-    }
+    .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(56, 189, 248, 0.6); }
 
     .btn-web {
         background: linear-gradient(135deg, var(--verde), var(--acento));
         color: #FFFFFF;
-        box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
+        box-shadow: 0 12px 35px rgba(34, 197, 94, 0.4);
+    }
+    .btn-web:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(34, 197, 94, 0.6); }
+
+    /* INFO BOX */
+    .info-box {
+        background: rgba(30, 41, 59, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 28px;
+        padding: 40px;
+        border: 1px solid rgba(148, 163, 184, 0.15);
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 24px;
+        margin-top: 40px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+    .info-item { text-align: center; }
+    .info-value {
+        font-size: 40px; font-weight: 800;
+        background: linear-gradient(135deg, var(--acento), var(--verde));
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .info-label { font-size: 14px; color: var(--subtext); margin-top: 6px; font-weight: 500; }
+
+    /* SECCIÓN APPS */
+    section { max-width: 1200px; margin: 0 auto; padding: 80px 24px; }
+    
+    .section-title { text-align: center; font-size: clamp(28px, 4vw, 42px); font-weight: 800; margin-bottom: 12px; }
+    .section-subtitle { text-align: center; color: var(--subtext); margin-bottom: 60px; font-size: 16px; }
+
+    .apps-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 32px;
+    }
+
+    .app-card {
+        background: rgba(30, 41, 59, 0.8);
+        backdrop-filter: blur(10px);
+        border-radius: 32px;
+        padding: 44px 36px;
+        border: 2px solid rgba(148, 163, 184, 0.1);
+        text-align: center;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         position: relative;
-        overflow: hidden;
     }
 
-    .btn-web::before {
-        content: '';
-        position: absolute;
-        top: 0; left: -100%;
-        width: 100%; height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-        transition: left 0.5s;
-    }
+    .app-card.main-app { border-color: rgba(56, 189, 248, 0.3); }
+    .app-card.translator-app { border-color: rgba(245, 158, 11, 0.3); }
 
-    .btn-web:hover::before { left: 100%; }
+    .app-card:hover { transform: translateY(-12px) scale(1.02); box-shadow: 0 35px 70px rgba(0,0,0,0.6); }
+    .app-card.main-app:hover { border-color: var(--acento); box-shadow: 0 35px 70px rgba(56, 189, 248, 0.25); }
+    .app-card.translator-app:hover { border-color: var(--ambar); box-shadow: 0 35px 70px rgba(245, 158, 11, 0.25); }
 
-    .btn-web:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 15px 40px rgba(34, 197, 94, 0.6);
+    .app-icon { font-size: 85px; line-height: 1; margin-bottom: 20px; display: block; }
+    .app-title { font-size: 28px; font-weight: 800; margin-bottom: 12px; color: var(--texto); }
+    .app-desc { font-size: 15px; color: var(--subtext); margin-bottom: 28px; line-height: 1.6; }
+
+    .app-features {
+        text-align: left;
+        margin: 28px 0;
+        padding: 24px;
+        background: rgba(15, 23, 42, 0.6);
+        border-radius: 20px;
+        font-size: 14px;
+        color: var(--subtext);
     }
+    .app-features li { list-style: none; padding: 8px 0; display: flex; align-items: center; gap: 10px; font-weight: 500; }
+    .app-features li::before { content: '✓'; color: var(--verde); font-weight: bold; font-size: 18px; }
+
+    .app-badge {
+        display: inline-block;
+        font-size: 12px; font-weight: 800;
+        padding: 8px 16px; border-radius: 999px; margin-bottom: 24px;
+        letter-spacing: 0.05em;
+    }
+    .app-badge.official { background: rgba(34, 197, 94, 0.2); color: var(--verde); border: 1px solid rgba(34, 197, 94, 0.4); }
+    .app-badge.official-new { background: rgba(245, 158, 11, 0.2); color: var(--ambar); border: 1px solid rgba(245, 158, 11, 0.4); }
+
+    .app-card .btn { width: 100%; justify-content: center; margin-top: 15px; padding: 18px; }
 
     .btn-translator {
         background: linear-gradient(135deg, var(--ambar), var(--rosa));
         color: #FFFFFF;
-        box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
-        position: relative;
-        overflow: hidden;
+        box-shadow: 0 12px 35px rgba(245, 158, 11, 0.4);
     }
+    .btn-translator:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(245, 158, 11, 0.6); }
 
-    .btn-translator::before {
-        content: '';
-        position: absolute;
-        top: 0; left: -100%;
-        width: 100%; height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-        transition: left 0.5s;
-    }
-
-    .btn-translator:hover::before { left: 100%; }
-
-    .btn-translator:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 15px 40px rgba(245, 158, 11, 0.6);
-    }
-
-    .btn-secondary {
-        background: var(--tarjeta);
-        color: var(--texto);
-        border: 1px solid rgba(148, 163, 184, 0.2);
-    }
-
-    .btn-secondary:hover {
-        background: #263449;
-        border-color: var(--acento);
-        transform: translateY(-3px);
-    }
-
-    section {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 60px 24px;
-    }
-
-    .section-title {
-        text-align: center;
-        font-size: clamp(24px, 4vw, 36px);
-        font-weight: 700;
-        margin-bottom: 12px;
-    }
-
-    .section-subtitle {
-        text-align: center;
-        color: var(--subtext);
-        margin-bottom: 48px;
-        font-size: 16px;
-    }
-
-    .features {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
-    }
-
-    .feature-card {
-        background: var(--tarjeta);
-        border: 1px solid rgba(148, 163, 184, 0.1);
-        border-radius: 18px;
-        padding: 28px 24px;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .feature-card::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0;
-        height: 3px;
-        background: linear-gradient(90deg, var(--acento), var(--violeta));
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 0.3s;
-    }
-
-    .feature-card:hover::before { transform: scaleX(1); }
-
-    .feature-card:hover {
-        transform: translateY(-6px);
-        border-color: rgba(56, 189, 248, 0.3);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    }
-
-    .feature-icon {
-        font-size: 36px;
-        margin-bottom: 16px;
-        display: block;
-    }
-
-    .feature-title {
-        font-size: 18px;
-        font-weight: 600;
-        margin-bottom: 8px;
-    }
-
-    .feature-desc {
-        font-size: 14px;
-        color: var(--subtext);
-        line-height: 1.6;
-    }
-
-    .feature-link {
-        display: inline-block;
-        margin-top: 12px;
-        padding: 10px 20px;
-        background: var(--verde);
-        color: white;
-        border-radius: 10px;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 13px;
-        transition: all 0.2s;
-    }
-
-    .feature-link:hover {
-        background: var(--acento);
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(34, 197, 94, 0.4);
-    }
-
-    /* ===== SECCIÓN DE APPS ===== */
-    .apps-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 24px;
-        margin-top: 40px;
-    }
-
-    .app-card {
-        background: var(--tarjeta);
-        border-radius: 24px;
-        padding: 32px 28px;
-        border: 2px solid rgba(148, 163, 184, 0.1);
-        text-align: center;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .app-card.main-app {
-        border-color: rgba(56, 189, 248, 0.3);
-    }
-
-    .app-card.translator-app {
-        border-color: rgba(245, 158, 11, 0.3);
-    }
-
-    .app-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
-    }
-
-    .app-card.main-app:hover {
-        border-color: var(--acento);
-        box-shadow: 0 25px 60px rgba(56, 189, 248, 0.3);
-    }
-
-    .app-card.translator-app:hover {
-        border-color: var(--ambar);
-        box-shadow: 0 25px 60px rgba(245, 158, 11, 0.3);
-    }
-
-    .app-card-icon {
-        font-size: 72px;
-        line-height: 1;
-        margin-bottom: 16px;
-        display: block;
-    }
-
-    .app-card-title {
-        font-size: 24px;
-        font-weight: 700;
-        margin-bottom: 8px;
-        color: var(--texto);
-    }
-
-    .app-card-desc {
-        font-size: 14px;
-        color: var(--subtext);
-        margin-bottom: 20px;
-        line-height: 1.6;
-    }
-
-    .app-card-features {
-        text-align: left;
-        margin: 20px 0;
-        padding: 16px;
-        background: var(--fondo);
-        border-radius: 12px;
-        font-size: 13px;
-        color: var(--subtext);
-    }
-
-    .app-card-features li {
-        list-style: none;
-        padding: 4px 0;
-    }
-
-    .app-card-features li::before {
-        content: '✓ ';
-        color: var(--verde);
-        font-weight: bold;
-    }
-
-    .app-card-badge {
-        display: inline-block;
-        background: var(--fondo);
-        color: var(--subtext);
-        font-size: 11px;
-        padding: 4px 10px;
-        border-radius: 999px;
-        margin-bottom: 16px;
-        font-weight: 600;
-    }
-
-    .app-card-badge.beta {
-        background: rgba(34, 197, 94, 0.15);
-        color: var(--verde);
-    }
-
-    .app-card-badge.new {
-        background: rgba(245, 158, 11, 0.15);
-        color: var(--ambar);
-    }
-
-    .app-card .btn {
-        width: 100%;
-        justify-content: center;
-    }
-
+    /* CAPTURAS */
     .screenshots {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 24px;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 28px;
         margin-top: 40px;
     }
-
     .screenshot {
-        background: var(--tarjeta);
-        border-radius: 24px;
-        padding: 14px;
+        background: rgba(30, 41, 59, 0.8);
+        border-radius: 28px; padding: 18px;
         border: 1px solid rgba(148, 163, 184, 0.1);
         aspect-ratio: 9/16;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        transition: all 0.3s ease;
+        display: flex; flex-direction: column;
+        transition: all 0.4s;
     }
-
-    .screenshot:hover {
-        transform: scale(1.03);
-        border-color: var(--acento);
-    }
-
+    .screenshot:hover { transform: scale(1.05); border-color: var(--acento); box-shadow: 0 20px 40px rgba(56, 189, 248, 0.15); }
     .screenshot-screen {
-        flex: 1;
-        background: var(--fondo);
-        border-radius: 14px;
-        padding: 16px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        overflow: hidden;
+        flex: 1; background: var(--fondo);
+        border-radius: 20px; padding: 22px;
+        display: flex; flex-direction: column; gap: 12px;
     }
+    .mock-header { display: flex; align-items: center; gap: 10px; padding-bottom: 14px; border-bottom: 1px solid rgba(148, 163, 184, 0.1); }
+    .mock-dot { width: 30px; height: 30px; background: var(--acento); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 15px; }
+    .mock-bar { flex: 1; height: 8px; background: rgba(148, 163, 184, 0.2); border-radius: 4px; }
+    .mock-bubble { background: var(--tarjeta); border-radius: 14px; padding: 14px 16px; font-size: 12px; color: var(--subtext); max-width: 85%; }
+    .mock-bubble.user { background: rgba(56, 189, 248, 0.15); color: var(--texto); align-self: flex-end; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .mock-bubble.bot { border: 1px solid rgba(34, 197, 94, 0.3); }
+    .mock-bubble.translator { border: 1px solid rgba(245, 158, 11, 0.3); background: rgba(245, 158, 11, 0.05); }
+    .mock-label { text-align: center; font-size: 14px; font-weight: 700; color: var(--subtext); margin-top: 18px; }
 
-    .mock-header {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid rgba(148, 163, 184, 0.1);
-    }
-
-    .mock-dot {
-        width: 24px; height: 24px;
-        background: var(--acento);
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 12px;
-    }
-
-    .mock-bar {
-        flex: 1;
-        height: 8px;
-        background: rgba(148, 163, 184, 0.2);
-        border-radius: 4px;
-    }
-
-    .mock-bubble {
-        background: var(--tarjeta);
-        border-radius: 12px;
-        padding: 10px 12px;
-        font-size: 11px;
-        color: var(--subtext);
-        max-width: 80%;
-    }
-
-    .mock-bubble.user {
-        background: rgba(56, 189, 248, 0.2);
-        color: var(--texto);
-        align-self: flex-end;
-        border: 1px solid rgba(56, 189, 248, 0.4);
-    }
-
-    .mock-bubble.bot {
-        border: 1px solid rgba(34, 197, 94, 0.3);
-    }
-
-    .mock-bubble.translator {
-        border: 1px solid rgba(245, 158, 11, 0.4);
-        background: rgba(245, 158, 11, 0.1);
-    }
-
-    .mock-label {
-        text-align: center;
-        font-size: 13px;
-        color: var(--subtext);
-        margin-top: 12px;
-    }
-
-    .info-box {
-        background: var(--tarjeta);
-        border-radius: 20px;
-        padding: 32px;
-        border: 1px solid rgba(148, 163, 184, 0.1);
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 24px;
-        margin-top: 32px;
-    }
-
-    .info-item { text-align: center; }
-
-    .info-value {
-        font-size: 32px;
-        font-weight: 800;
-        background: linear-gradient(135deg, var(--acento), var(--verde));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    .info-label {
-        font-size: 13px;
-        color: var(--subtext);
-        margin-top: 4px;
-    }
-
-    .download-box {
-        background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(139, 92, 246, 0.1));
-        border: 1px solid rgba(56, 189, 248, 0.3);
-        border-radius: 24px;
-        padding: 48px 32px;
-        text-align: center;
-    }
-
-    .download-box h2 {
-        font-size: clamp(22px, 4vw, 32px);
-        margin-bottom: 12px;
-    }
-
-    .download-box p {
-        color: var(--subtext);
-        margin-bottom: 28px;
-    }
-
-    .download-notes {
-        margin-top: 24px;
-        font-size: 13px;
-        color: var(--subtext);
-        line-height: 1.8;
-    }
-
-    .download-notes strong { color: var(--texto); }
-
-    .web-box {
-        background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(56, 189, 248, 0.1));
-        border: 1px solid rgba(34, 197, 94, 0.3);
-        border-radius: 24px;
-        padding: 48px 32px;
-        text-align: center;
-        margin-top: 24px;
-    }
-
-    .web-box h2 {
-        font-size: clamp(22px, 4vw, 32px);
-        margin-bottom: 12px;
-    }
-
-    .web-box p {
-        color: var(--subtext);
-        margin-bottom: 28px;
-    }
-
-    .changelog {
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
-    .changelog-item {
-        background: var(--tarjeta);
-        border-radius: 16px;
-        padding: 20px 24px;
-        margin-bottom: 12px;
-        border-left: 3px solid var(--acento);
-        transition: all 0.3s ease;
-    }
-
-    .changelog-item:hover {
-        border-left-color: var(--verde);
-        transform: translateX(6px);
-    }
-
-    .changelog-item.translator {
-        border-left-color: var(--ambar);
-    }
-
-    .changelog-version {
-        font-weight: 700;
-        color: var(--verde);
-        font-size: 15px;
-        margin-bottom: 8px;
-    }
-
-    .changelog-item.translator .changelog-version {
-        color: var(--ambar);
-    }
-
-    .changelog-item ul { list-style: none; padding: 0; }
-
-    .changelog-item li {
-        font-size: 14px;
-        color: var(--subtext);
-        padding: 3px 0;
-    }
-
-    .changelog-item li::before {
-        content: '→ ';
-        color: var(--acento);
-    }
-
-    .changelog-item.translator li::before {
-        color: var(--ambar);
-    }
-
+    /* FOOTER */
     footer {
         border-top: 1px solid rgba(148, 163, 184, 0.1);
-        padding: 40px 24px;
+        padding: 60px 24px;
         text-align: center;
-        margin-top: 60px;
+        margin-top: 80px;
+        background: rgba(15, 23, 42, 0.5);
     }
+    footer p { font-size: 14px; color: var(--subtext); margin-bottom: 12px; }
+    footer .heart { color: var(--rojo); animation: beat 1.5s infinite; display: inline-block; }
+    @keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
 
-    footer p {
-        font-size: 13px;
-        color: var(--subtext);
-        margin-bottom: 8px;
-    }
-
-    footer .heart {
-        color: var(--rojo);
-        animation: beat 1.5s ease-in-out infinite;
-        display: inline-block;
-    }
-
-    @keyframes beat {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.2); }
-    }
+    /* ANIMACIONES */
+    .fade-in { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 768px) {
         .nav-links { display: none; }
-        .hero { padding: 50px 20px 40px; }
-        .hero-icon { width: 96px; height: 96px; font-size: 48px; }
-        .buttons { flex-direction: column; align-items: stretch; }
-        .btn { justify-content: center; }
-        section { padding: 40px 20px; }
+        .hero { padding: 70px 20px 40px; }
+        .hero-icon { width: 110px; height: 110px; font-size: 55px; }
+        .buttons { flex-direction: column; }
+        .btn { width: 100%; justify-content: center; }
+        .app-card { padding: 32px 24px; }
         .info-box { padding: 24px; }
-        .app-card { padding: 24px 20px; }
-    }
-
-    .fade-in {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.6s ease;
-    }
-
-    .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
     }
 </style>
 </head>
@@ -757,17 +364,15 @@
     <div class="nav-container">
         <a href="#" class="logo">
             <div class="logo-icon">
-                <img src="ic_launcher.png" alt="Icono">
+                <img src="ic_launcher.PNG" alt="Icono">
             </div>
             <span>Ultra AI Pro</span>
         </a>
         <ul class="nav-links">
-            <li><a href="#apps">Apps</a></li>
-            <li><a href="#features">Características</a></li>
+            <li><a href="#apps">Aplicaciones</a></li>
             <li><a href="#screenshots">Capturas</a></li>
-            <li><a href="#changelog">Cambios</a></li>
             <li><a href="#download">Descargar</a></li>
-            <li><a href="uawb.html">Versión Web</a></li>
+            <li><a href="uaweb.html">Versión Web</a></li>
         </ul>
     </div>
 </nav>
@@ -775,46 +380,43 @@
 <!-- HERO -->
 <header class="hero">
     <div class="badge">
-        <span>🚀</span> Versión 1.0 Beta — 2 Apps disponibles
+        <span>🚀</span> Versión 1.0 Oficial
     </div>
 
     <div class="hero-icon">
-        <img src="ic_launcher.png" alt="Ultra AI Pro">
+        <img src="ic_launcher.PNG" alt="Ultra AI Pro">
     </div>
 
     <h1>Ultra AI Pro</h1>
     <p class="subtitle">
-        La IA más ligera de todas. Chat, traductor, imágenes, audio y texto a voz.
-        Solo 60 KB. 100% gratis.
+        La IA más ligera de todas. Chat inteligente, traductor, imágenes, audio y texto a voz en una sola suite.
+        Desde solo 68 KB. 100% oficial y gratis.
     </p>
 
     <div class="buttons">
         <a href="#apps" class="btn btn-primary">
             <span>⬇️</span> Descargar APK
         </a>
-        <a href="uawb.html" class="btn btn-web">
+        <a href="uaweb.html" class="btn btn-web">
             <span>🌐</span> Abrir versión web
-        </a>
-        <a href="#features" class="btn btn-secondary">
-            <span>📖</span> Ver características
         </a>
     </div>
 
     <div class="info-box">
         <div class="info-item">
-            <div class="info-value">60 KB</div>
-            <div class="info-label">Tamaño del APK</div>
+            <div class="info-value">88 KB</div>
+            <div class="info-label">App Principal</div>
         </div>
         <div class="info-item">
-            <div class="info-value">Android 4.0.1+</div>
-            <div class="info-label">Compatibilidad</div>
+            <div class="info-value">68 KB</div>
+            <div class="info-label">Traductor</div>
         </div>
         <div class="info-item">
             <div class="info-value">2</div>
-            <div class="info-label">Apps disponibles</div>
+            <div class="info-label">Aplicaciones</div>
         </div>
         <div class="info-item">
-            <div class="info-value">3</div>
+            <div class="info-value">4</div>
             <div class="info-label">Idiomas</div>
         </div>
     </div>
@@ -822,135 +424,64 @@
 
 <!-- SECCIÓN DE APPS -->
 <section id="apps" class="fade-in">
-    <h2 class="section-title">📱 Nuestras Apps</h2>
-    <p class="section-subtitle">Creado por Alejandro Eng 💻</p>
+    <h2 class="section-title">📱 Nuestras Aplicaciones</h2>
+    <p class="section-subtitle">Dos herramientas poderosas, un mismo estilo oficial</p>
 
     <div class="apps-grid">
-
-        <!-- APP 1: Ultra AI Pro -->
+        <!-- APP 1 -->
         <div class="app-card main-app">
-            <span class="app-card-badge beta">● BETA</span>
-            <span class="app-card-icon">🧠</span>
-            <div class="app-card-title">Ultra AI Pro</div>
-            <p class="app-card-desc">
-                Chat con IA, imágenes, audio y texto a voz. La app todo-en-uno.
+            <span class="app-badge official">● VERSIÓN OFICIAL</span>
+            <span class="app-icon">🧠</span>
+            <div class="app-title">Ultra AI Pro</div>
+            <p class="app-desc">
+                Chat con IA, imágenes, audio y texto a voz. La app definitiva todo-en-uno.
             </p>
 
-            <ul class="app-card-features">
+            <ul class="app-features">
                 <li>💬 Chat inteligente con IA</li>
                 <li>📷 Análisis de imágenes</li>
                 <li>🎤 Mensajes de voz</li>
-                <li>🔊 Texto a voz</li>
+                <li>🔊 Texto a voz (TTS)</li>
                 <li>🧠 Pensamiento profundo</li>
-                <li>🌍 3 idiomas</li>
+                <li>🎨 9 temas personalizables</li>
+                <li>📦 Tamaño: 88 KB</li>
             </ul>
 
-            <a href="https://www.mediafire.com/file/fyd9wodbi9ajchg/Ultra+AI+Pro_1.0.apk/file" target="_blank" rel="noopener" class="btn btn-primary">
-                <span>⬇️</span> Descargar APK
+            <a href="https://www.mediafire.com/file/erxtu1yd87ar6cg/Ultra_AI_Pro_1.0_Oficial.apk/file" target="_blank" rel="noopener" class="btn btn-primary">
+                <span>⬇️</span> Descargar APK (88 KB)
             </a>
         </div>
 
-        <!-- APP 2: Ultra AI Pro Traductor -->
+        <!-- APP 2 -->
         <div class="app-card translator-app">
-            <span class="app-card-badge new">✨ NUEVO</span>
-            <span class="app-card-icon">🌐</span>
-            <div class="app-card-title">Ultra AI Pro Traductor</div>
-            <p class="app-card-desc">
+            <span class="app-badge official-new">✨ VERSIÓN OFICIAL</span>
+            <span class="app-icon">🌐</span>
+            <div class="app-title">Ultra AI Traductor</div>
+            <p class="app-desc">
                 Traduce entre más de 30 idiomas con voz, imágenes y texto a voz.
             </p>
 
-            <ul class="app-card-features">
+            <ul class="app-features">
                 <li>🌍 30+ idiomas disponibles</li>
-                <li>🔄 Swap de idiomas</li>
+                <li>📷 OCR de imágenes</li>
                 <li>🎤 Traducción por voz</li>
                 <li>🔊 Escuchar traducción</li>
                 <li>📚 Historial de traducciones</li>
-                <li>⚡ Auto-detección de idioma</li>
+                <li>🎭 Control de formalidad</li>
+                <li>📦 Tamaño: 68 KB</li>
             </ul>
 
-            <a href="https://www.mediafire.com/file/oa32pammkzq89fl/Ultra+AI+Traductor_1.0.apk/file" target="_blank" rel="noopener" class="btn btn-translator">
-                <span>⬇️</span> Descargar APK
+            <a href="https://www.mediafire.com/file/f1mpp827jiwnwdm/Ultra_Ai_traductor_1.0_oficial.apk/file" target="_blank" rel="noopener" class="btn btn-translator">
+                <span>⬇️</span> Descargar APK (68 KB)
             </a>
         </div>
-
     </div>
 </section>
 
-<!-- FEATURES -->
-<section id="features" class="fade-in">
-    <h2 class="section-title">✨ Características</h2>
-    <p class="section-subtitle">Todo lo que necesitas en una sola app</p>
-
-    <div class="features">
-        <div class="feature-card">
-            <span class="feature-icon">💬</span>
-            <div class="feature-title">Chat inteligente</div>
-            <p class="feature-desc">Conversaciones naturales con IA de última generación. Historial persistente.</p>
-        </div>
-
-        <div class="feature-card">
-            <span class="feature-icon">🌐</span>
-            <div class="feature-title">Traductor integrado</div>
-            <p class="feature-desc">Traduce entre más de 30 idiomas. Con voz, imágenes y texto a voz.</p>
-        </div>
-
-        <div class="feature-card">
-            <span class="feature-icon">📷</span>
-            <div class="feature-title">Análisis de imágenes</div>
-            <p class="feature-desc">Envía fotos y la IA las describe, analiza y transcribe su texto.</p>
-        </div>
-
-        <div class="feature-card">
-            <span class="feature-icon">🎤</span>
-            <div class="feature-title">Mensajes de voz</div>
-            <p class="feature-desc">Graba audios estilo WhatsApp. La IA los transcribe y responde.</p>
-        </div>
-
-        <div class="feature-card">
-            <span class="feature-icon">🔊</span>
-            <div class="feature-title">Texto a voz</div>
-            <p class="feature-desc">Escucha las respuestas en voz alta. Con botón para detener cuando quieras.</p>
-        </div>
-
-        <div class="feature-card">
-            <span class="feature-icon">🧠</span>
-            <div class="feature-title">Pensamiento profundo</div>
-            <p class="feature-desc">Modo DeepThink para razonamientos paso a paso y respuestas más elaboradas.</p>
-        </div>
-
-        <div class="feature-card">
-            <span class="feature-icon">🌍</span>
-            <div class="feature-title">Multi-idioma</div>
-            <p class="feature-desc">Español, English y Français. Cambia el idioma en cualquier momento.</p>
-        </div>
-
-        <div class="feature-card">
-            <span class="feature-icon">🎨</span>
-            <div class="feature-title">3 temas</div>
-            <p class="feature-desc">Oscuro, Claro y Medianoche. Personaliza la app a tu gusto.</p>
-        </div>
-
-        <div class="feature-card">
-            <span class="feature-icon">💰</span>
-            <div class="feature-title">100% gratis</div>
-            <p class="feature-desc">Usa modelos gratuitos de OpenRouter. Sin costes ocultos ni suscripciones.</p>
-        </div>
-
-        <div class="feature-card" style="border-color: rgba(34, 197, 94, 0.3);">
-            <span class="feature-icon">🌐</span>
-            <div class="feature-title">Versión Web disponible</div>
-            <p class="feature-desc">
-                Úsala desde tu PC sin descargar nada. Mismas funciones que el APK.
-            </p>
-            <a href="uawb.html" class="feature-link">🌐 Abrir Ultra AI Pro Web</a>
-        </div>
-    </div>
-</section>
-
-<!-- SCREENSHOTS -->
+<!-- CAPTURAS -->
 <section id="screenshots" class="fade-in">
-    <h2 class="section-title">📱 Capturas</h2>
-    <p class="section-subtitle">Así se ven nuestras apps</p>
+    <h2 class="section-title">🖼️ Capturas</h2>
+    <p class="section-subtitle">Así se ven nuestras aplicaciones oficiales</p>
 
     <div class="screenshots">
         <div class="screenshot">
@@ -1001,111 +532,62 @@
         <div class="screenshot">
             <div class="screenshot-screen">
                 <div class="mock-header">
-                    <div class="mock-dot">📚</div>
+                    <div class="mock-dot">📎</div>
                     <div class="mock-bar"></div>
                 </div>
-                <div class="mock-bubble bot">🌍 Historique</div>
-                <div class="mock-bubble user">Hello</div>
-                <div class="mock-bubble translator">→ Bonjour</div>
-                <div class="mock-bubble user">Merci</div>
-                <div class="mock-bubble translator">→ Gracias</div>
+                <div class="mock-bubble user">📎 Menú File</div>
+                <div class="mock-bubble bot">📷 Cámara</div>
+                <div class="mock-bubble bot">🎤 Audio</div>
+                <div class="mock-bubble bot">🔊 TTS · ➕ Más</div>
+                <div class="mock-bubble user">Menú animado</div>
             </div>
-            <div class="mock-label">Historial</div>
+            <div class="mock-label">Menú File</div>
         </div>
     </div>
 </section>
 
-<!-- CHANGELOG -->
-<section id="changelog" class="fade-in">
-    <h2 class="section-title">📋 Lista de cambios</h2>
-    <p class="section-subtitle">Lo nuevo en nuestras apps</p>
-
-    <div class="changelog">
-        <div class="changelog-item translator">
-            <div class="changelog-version">🌐 Ultra AI Pro Traductor v1.0 Beta — NUEVO</div>
-            <ul>
-                <li>🌍 30+ idiomas disponibles</li>
-                <li>🔄 Botón de intercambio de idiomas</li>
-                <li>🎤 Traducción por voz</li>
-                <li>🔊 Escuchar traducción con TTS</li>
-                <li>📚 Historial de traducciones</li>
-                <li>🌐 3 idiomas de interfaz: ES · EN · FR</li>
-                <li>🎨 3 temas personalizables</li>
-            </ul>
-        </div>
-
-        <div class="changelog-item">
-            <div class="changelog-version">🧠 Ultra AI Pro v1.0 Beta</div>
-            <ul>
-                <li>🌍 Multi-idioma: Español, English, Français</li>
-                <li>🎨 3 temas: Oscuro, Claro, Medianoche</li>
-                <li>🧠 Pensamiento profundo (DeepThink)</li>
-                <li>📂 Menú lateral de conversaciones</li>
-                <li>💬 Historial persistente con borrado individual</li>
-                <li>📎 Menú File animado (📷 · 🎤 · 🔊 · ⏹️)</li>
-                <li>📷 Análisis de imágenes con IA</li>
-                <li>🎤 Grabación de audio + transcripción</li>
-                <li>🔊 Texto a voz con botón detener</li>
-                <li>🔒 API Key ofuscada en Base64</li>
-                <li>💰 100% gratis con modelos de OpenRouter</li>
-                <li>📦 Solo 60 KB de peso</li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-<!-- DOWNLOAD -->
+<!-- DESCARGA Y WEB -->
 <section id="download" class="fade-in">
-    <div class="download-box">
-        <h2>⬇️ Descargar Ultra AI Pro</h2>
-        <p>Descarga los APK directamente desde MediaFire</p>
+    <div style="background: linear-gradient(135deg, rgba(56,189,248,0.1), rgba(139,92,246,0.1)); border: 1px solid rgba(56,189,248,0.3); border-radius: 32px; padding: 70px 32px; text-align: center;">
+        <h2 style="font-size: 36px; margin-bottom: 16px; font-weight: 800;">⬇️ Descargar Ultra AI Pro</h2>
+        <p style="color: var(--subtext); margin-bottom: 36px; font-size: 16px;">Descarga los APK oficiales directamente desde MediaFire</p>
 
         <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-            <a href="https://www.mediafire.com/file/fyd9wodbi9ajchg/Ultra+AI+Pro_1.0.apk/file" target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 16px; padding: 16px 32px;">
-                <span>🧠</span> Ultra AI Pro
+            <a href="https://www.mediafire.com/file/erxtu1yd87ar6cg/Ultra_AI_Pro_1.0_Oficial.apk/file" target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 17px; padding: 18px 36px;">
+                <span>🧠</span> Ultra AI Pro (88 KB)
             </a>
-            <a href="https://www.mediafire.com/file/oa32pammkzq89fl/Ultra+AI+Traductor_1.0.apk/file" target="_blank" rel="noopener" class="btn btn-translator" style="font-size: 16px; padding: 16px 32px;">
-                <span>🌐</span> Ultra AI Traductor
+            <a href="https://www.mediafire.com/file/f1mpp827jiwnwdm/Ultra_Ai_traductor_1.0_oficial.apk/file" target="_blank" rel="noopener" class="btn btn-translator" style="font-size: 17px; padding: 18px 36px;">
+                <span>🌐</span> Ultra AI Traductor (68 KB)
             </a>
         </div>
 
-        <div class="download-notes">
+        <div style="margin-top: 40px; font-size: 14px; color: var(--subtext); line-height: 1.8;">
             <strong>📱 Requisitos:</strong> Android 5.0 o superior<br>
-            <strong>📦 Tamaños:</strong> ~60 KB · ~70 KB<br>
+            <strong>📦 Tamaños:</strong> ~88 KB · ~68 KB<br>
             <strong>🔒 Seguridad:</strong> Activa "Orígenes desconocidos" en Ajustes<br>
-            <strong>💰 Precio:</strong> Completamente gratis<br>
-            <strong>⚠️ Nota:</strong> Versión beta — puede contener errores
+            <strong>💰 Precio:</strong> Completamente gratis
         </div>
     </div>
 
-    <!-- VERSIÓN WEB -->
-    <div class="web-box">
-        <h2>🌐 Probar la versión web</h2>
-        <p>Úsala desde tu PC sin instalar nada. Mismas funciones que el APK</p>
+    <div style="background: linear-gradient(135deg, rgba(34,197,94,0.1), rgba(56,189,248,0.1)); border: 1px solid rgba(34,197,94,0.3); border-radius: 32px; padding: 70px 32px; text-align: center; margin-top: 32px;">
+        <h2 style="font-size: 36px; margin-bottom: 16px; font-weight: 800;">🌐 Probar la versión web</h2>
+        <p style="color: var(--subtext); margin-bottom: 36px; font-size: 16px;">Úsala desde tu PC sin instalar nada. Mismas funciones que el APK</p>
 
-        <a href="uawb.html" class="btn btn-web" style="font-size: 18px; padding: 18px 40px;">
+        <a href="uaweb.html" class="btn btn-web" style="font-size: 20px; padding: 20px 48px;">
             <span>🌐</span> Abrir Ultra AI Pro Web
         </a>
-
-        <div class="download-notes">
-            <strong>💻 Compatible:</strong> Chrome, Firefox, Edge, Safari<br>
-            <strong>🎯 Funciones:</strong> Chat · Imágenes · Audio · TTS · DeepThink<br>
-            <strong>💰 Precio:</strong> Completamente gratis<br>
-            <strong>🔒 Privacidad:</strong> Historial guardado en tu navegador
-        </div>
     </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-    <p>🧠 <strong>Ultra AI Pro</strong> v1.0 Beta · 🌐 <strong>Traductor</strong> v1.0 Beta</p>
+    <p>🧠 <strong>Ultra AI Pro</strong> v1.0 Oficial · 🌐 <strong>Traductor</strong> v1.0 Oficial</p>
     <p>Creado con <span class="heart">❤</span> por <strong>Alejandro Eng</strong> · Cuba · 2026</p>
-    <p style="margin-top: 16px; font-size: 12px;">
-        © 2026 Alejandro Eng. Todos los derechos reservados.
-    </p>
+    <p style="margin-top: 24px; font-size: 12px;">© 2026 Alejandro Eng. Todos los derechos reservados.</p>
 </footer>
 
 <script>
+    // Animación de entrada al hacer scroll
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -1116,6 +598,7 @@
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+    // Scroll suave
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
